@@ -10,14 +10,15 @@
 
 // this function takes a double n and returns n multiplied by itself 
 int my_function(double n){
-  double n2 = n*n
-  return n;
+  double n2 = n*n;
+  printf("%f",n2);
+  return n2;
 }
 
 int main(void) {
-  int value = 42
+  int value = 42;
   double processed_value = my_function(value);
   printf("The initial value was %d", value); 
-  printf(" and the processed value is %d\n", processed_value);
+  printf(" and the processed value is %f\n", processed_value);
   return 0;
 }

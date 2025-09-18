@@ -14,7 +14,11 @@
 */
 
 int main(void) {
-  int n = 14;
+  int n = 24;
   printf("Hello World\n");
+    printf("%d\n", n);
+  n = 4;
+  int m = n*3;
+  printf("%d\n", m);
   return 0;
 }
