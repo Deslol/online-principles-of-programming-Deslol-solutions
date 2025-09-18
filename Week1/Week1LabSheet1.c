@@ -159,6 +159,6 @@ Which print out, the cylinder with height 7.0cm and radius 4.0cm has a volume of
 
 void volumeOfACylinder(double height, double radius) {
     double pi = 3.14159265359;
-    double volumn = pi * radius * radius * height;
-    printf("The cylinder with height %fcm and radius %fcm has a volumn of %fcm^3", height, radius, volumn);
+    double volume = pi * radius * radius * height;
+    printf("The cylinder with height %fcm and radius %fcm has a volumn of %fcm^3", height, radius, volume);
 }
