@@ -8,7 +8,31 @@
  * defined and by using a global variable.
  */
 
+
+// 1
+void hundredTimesN() {
+    int n = 100;
+    printf("%d\n", n * n);
+}
+
+// 2
+
+int hundredTimesNResult() {
+    int n = 100;
+    return n * n;
+}
+
+// 3
+
+int global_n = 100;
+
+int globalHundredTimesN() {
+    return global_n * global_n;
+}
+
 int main(void) {
-  printf("Hello World\n");
-  return 0;
+    hundredTimesN();
+    printf("print the result in main function %d\n", hundredTimesNResult());
+    printf("print the result in main function using global variable %d\n", globalHundredTimesN());
+    return 0;
 }
