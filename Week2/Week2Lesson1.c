@@ -16,10 +16,14 @@
 */
 
 double pow3(double value){
-  return 1.0;
+  return pow(value, 3);
+}
+
+double logValue(double value) {
+  return log(value);
 }
 
 int main(void) {
-  printf("Hello World\n");
+  printf("The power 3 of the value %d, is %.2f and the natural log of value %d, is %.2f\n", 3, pow3(3), 12, logValue(12));
   return 0;
 }
