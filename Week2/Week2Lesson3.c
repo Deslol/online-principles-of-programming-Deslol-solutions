@@ -10,7 +10,25 @@
  *
 */
 
+// 1
+
+bool numberIsDivisibleBy3(int num) {
+    return num % 3 == 0;
+}
+
+// 2
+
+bool numberIsDivisibleBy3Or5(int num) {
+    return num % 3 == 0 || num % 5 == 0;
+}
+
 int main(void) {
-  printf("Hello World\n");
-  return 0;
+    // true
+    printf("Number is divisible by 3?, %s\n", numberIsDivisibleBy3(6) ? "Yes" : "No");
+    printf("Number is divisible by 3?, %s\n", numberIsDivisibleBy3Or5(30) ? "Yes" : "No");
+    // false
+    printf("Number is divisible by 3 or 5?, %s\n", numberIsDivisibleBy3(5) ? "Yes" : "No");
+    printf("Number is divisible by 3 or 5?, %s\n", numberIsDivisibleBy3(10) ? "Yes" : "No");
+
+    return 0;
 }

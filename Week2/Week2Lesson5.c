@@ -10,10 +10,19 @@
  * if we call fibonacci(4) we should get the value 3 returned.
  */
 int fibonacci(int term) {
-  
+    int prev = 0, curr = 1, next, n;
+    if (term == 0 || term == 1) return 1;
+
+    for (n = 2; n <= term; n++) {
+        next = curr + prev;
+        prev = curr;
+        curr = next;
+    }
+
+    return curr;
 }
 
 int main(void) {
-  printf("Hello World\n");
-  return 0;
+    printf("%d\n", fibonacci(10));
+    return 0;
 }
