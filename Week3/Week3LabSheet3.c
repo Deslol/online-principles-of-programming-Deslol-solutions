@@ -87,11 +87,11 @@ int hexToDec(char hex[]) {
 /* Question 2
  Complete the function below that print out a tree shape such as the following: 
 
-    *
-   ***
-  *****
- *******
-*********
+    *      4 blank + 1* (1 + 0 * 2)
+   ***     3 blank + 3* (1 + 1 * 2)
+  *****    2 blank + 5* (1 + 2 * 2)
+ *******   1 blank + 7* (1 + 3 * 2)
+*********  0 blank + 9* (1 + 4 * 2)
    ***
    ***
    ***
@@ -99,18 +99,72 @@ int hexToDec(char hex[]) {
 
   Note you can (and probably should) implement additional functions to help.
 
-  You can assume that the width of the tree will be odd and hence every line will have an odd number of asterisks. The trunk will always have a width of three.
+  You can assume that the width of the tree will be odd and hence every line will have an odd number of asterisks.
+
+  The trunk will always have a width of three.
 
   Call this function from the main to test your program.
 */
+void printMultiBlank(int number) {
+    while (number > 0) {
+        printf(" ");
+        number--;
+    }
+}
+
+void printMultiAst(int number) {
+    while (number > 0) {
+        printf("*");
+        number--;
+    }
+}
 
 void printTree(int width, int trunkLength) {
+    // the trunkWidth of the tree is always 3
+    char trunkWidth[4] = "***";
+    // The width of the tree must be odd
+    if (width % 2 == 0) {
+        printf("The width of the tree must be odd.");
+        return;
+    };
+    // the center point of the tree is always width/2 + 0.5
+    int numberOfLines = (int) (width / 2.0 + 0.5);
+    /*
+    *      4 blank + 1* (1 + 0(line) * 2) -1
+   ***     3 blank + 3* (1 + 1 * 2) -2
+  *****    2 blank + 5* (1 + 2 * 2) -3
+ *******   1 blank + 7* (1 + 3 * 2) -4
+*********  0 blank + 9* (1 + 4 * 2) -5
+   ***
+   ***
+   ***
+   ***
+     */
+    for (int i = 0; i < numberOfLines; i++) {
+        // print number of blank (numberOfLines - i[number of line])
+        printMultiBlank(numberOfLines - i - 1);
+        // followed by asterisk (numberOfLines * 2 + 1)
+        printMultiAst(i * 2 + 1);
+        // new line
+        printf("\n");
+    }
+
+    for (int i = 0; i < trunkLength; i++) {
+        // before cp-1 : print blank space
+        // center point - 1 : start to print 3 stars
+        // number of blank space = ( width - trunkWidth ) / 2
+        printMultiBlank((width - 3) / 2);
+        printMultiAst(3);
+        printf("\n");
+    }
 }
+
 
 int main(void) {
     char hex[4] = "FF3";
     char testHex[6] = "0xAF3";
     printf("The hex value %s is %d in decimal\n", hex, hexToDec(hex));
     printf("The hex value %s is %d in decimal\n", testHex, hexToDec(testHex));
+    printTree(21, 3);
     return 0;
 }
