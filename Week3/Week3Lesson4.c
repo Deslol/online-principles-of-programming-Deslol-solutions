@@ -8,13 +8,15 @@
 
 char string2[11];
 
-void copyAndPrintArray(char string1[]){
-  strcpy(string2, string1);
-  printf("%s\n", string2);
+void copyAndPrintArray(char string1[]) {
+    strcpy(string2, string1);
+    for (int i = strlen(string2) - 1; i >= 0; i--) {
+        printf("%c\n", string2[i]);
+    };
 }
 
 int main(void) {
-  char string1[11] = "my message";
-  copyAndPrintArray(string1);
-  return 0;
+    char string1[11] = "my message";
+    copyAndPrintArray(string1);
+    return 0;
 }
