@@ -159,6 +159,40 @@ void printTree(int width, int trunkLength) {
     }
 }
 
+int test(int x) {
+    int p = 0;
+    int c = 1;
+    int next;
+    int count = 2;
+    do {
+        next = p + c;
+        p = c;
+        c = next;
+        count = count + 1;
+    }while (count <= x);
+    return count;
+}
+
+struct WeirdList{
+    int head;
+    int a[10];
+};
+struct WeirdList w;
+
+void _add(int n){
+    w.a[w.head] = n;
+    w.head++;
+}
+
+void _remove(){
+    w.head--;
+}
+
+void p(){
+    for(int i=0; i<=10; i++){
+        printf("%d, ", w.a[i]);
+    }
+}
 
 int main(void) {
     char hex[4] = "FF3";
@@ -166,5 +200,17 @@ int main(void) {
     printf("The hex value %s is %d in decimal\n", hex, hexToDec(hex));
     printf("The hex value %s is %d in decimal\n", testHex, hexToDec(testHex));
     printTree(21, 3);
+    printf("%d\n", (2 * 2 + 3 * 3 - 3 - 3 * 2));
+    printf("%d\n", test(1));
+
+    double xyz = 9;
+    printf("The square root of %f is %.2f\n",xyz, sqrt(xyz));
+    w.head = 0;
+    _add(3);
+    _add(4);
+    _remove();
+    _remove();
+    _add(1);
+    p();
     return 0;
 }
