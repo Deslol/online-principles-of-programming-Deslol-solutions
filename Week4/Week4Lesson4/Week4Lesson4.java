@@ -62,7 +62,12 @@ public class Week4Lesson4 {
         // 2. + shiftBy number
         // 3. convert it back to text
         for(int i=0;i < s.length(); i++){
-            convertedText[i] = Character.toChars(s.codePointAt(i) + shiftBy)[0];
+            int codePoint = s.codePointAt(i);
+            if ((codePoint >= 65 && codePoint <= 90) || (codePoint >= 97 && codePoint <= 122)) {
+                convertedText[i] = Character.toChars(s.codePointAt(i) + shiftBy)[0];
+            }else{
+                return "A-Z, a-z only allowed in string input";
+            }
         }
         return new String(convertedText);
     }
@@ -76,7 +81,13 @@ public class Week4Lesson4 {
     public String decryptText(String s, int shiftBy) {
         char[] convertedText = new char[s.length()];
         for(int i=0;i < s.length(); i++){
-            convertedText[i] = Character.toChars(s.codePointAt(i) - shiftBy)[0];
+            int codePoint = s.codePointAt(i);
+            if ((codePoint >= 65 && codePoint <= 90) || (codePoint >= 97 && codePoint <= 122)) {
+                convertedText[i] = Character.toChars(s.codePointAt(i) - shiftBy)[0];
+            }else{
+                return "A-Z, a-z only allowed in string input";
+            }
+
         }
         return new String(convertedText);
     }
