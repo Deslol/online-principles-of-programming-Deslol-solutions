@@ -12,13 +12,22 @@
 
 import java.io.*;
 import java.time.Year;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello world!");
         Main instance = new Main();
-        instance.solutionWithBufferReader();
+        Scanner s = new Scanner(System.in);
+        try {
+//            instance.solutionWithBufferReader();
+            instance.solutionWithScanner(s);
+        }catch (Exception e) {
+            return;
+        }finally {
+            s.close();
+        }
     }
 
     public String cmToFtInches(int cm) {
@@ -43,16 +52,15 @@ public class Main {
         try (
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
         ) {
-            String name;
             Main W5L4 = new Main();
 
             System.out.println("Please type your name: ");
-            name = br.readLine();
+            String name = br.readLine();
 //            System.out.println("Please type your age: ");
 //            age = br.readLine();
             System.out.println("What's your year of birth: ");
             int birthYear = Integer.parseInt(br.readLine());
-            if(birthYear < 0) {
+            if (birthYear < 0) {
                 positiveOnlyWarning("Year of birth");
                 return;
             }
@@ -60,7 +68,7 @@ public class Main {
             System.out.println("How tall are you in cm?: ");
             int cm = Integer.parseInt(br.readLine());
 
-            if(cm <= 0) {
+            if (cm <= 0) {
                 positiveOnlyWarning("Height in cm");
                 return;
             }
@@ -74,7 +82,37 @@ public class Main {
             return;
         }
     }
+
+    // With scanner
+    public void solutionWithScanner(Scanner s) {
+        try {
+            Main W5L4 = new Main();
+
+            System.out.println("Please type your name: ");
+            String name = s.nextLine();
+//            System.out.println("Please type your age: ");
+//            age = s.readLine();
+            System.out.println("What's your year of birth: ");
+            int birthYear = Integer.parseInt(s.nextLine());
+            if (birthYear < 0) {
+                positiveOnlyWarning("Year of birth");
+                return;
+            }
+            int age = Year.now().getValue() - birthYear;
+            System.out.println("How tall are you in cm?: ");
+            int cm = Integer.parseInt(s.nextLine());
+
+            if (cm <= 0) {
+                positiveOnlyWarning("Height in cm");
+                return;
+            }
+            String heightStr = W5L4.cmToFtInches(cm);
+            W5L4.greetingWithInfos(name, age, birthYear);
+            System.out.print(heightStr);
+        }catch (Exception e){
+            return;
+        }
+    }
 }
 
 
-// With scanner
