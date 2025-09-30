@@ -34,6 +34,10 @@ public class Main {
         System.out.println();
     }
 
+    public void positiveOnlyWarning(String value) {
+        System.out.printf("%s can be positive only, please try again.", value);
+    }
+
     // With buffer reader
     public void solutionWithBufferReader() {
         try (
@@ -48,9 +52,18 @@ public class Main {
 //            age = br.readLine();
             System.out.println("What's your year of birth: ");
             int birthYear = Integer.parseInt(br.readLine());
+            if(birthYear < 0) {
+                positiveOnlyWarning("Year of birth");
+                return;
+            }
             int age = Year.now().getValue() - birthYear;
             System.out.println("How tall are you in cm?: ");
             int cm = Integer.parseInt(br.readLine());
+
+            if(cm <= 0) {
+                positiveOnlyWarning("Height in cm");
+                return;
+            }
             String heightStr = W5L4.cmToFtInches(cm);
             W5L4.greetingWithInfos(name, age, birthYear);
             System.out.print(heightStr);
