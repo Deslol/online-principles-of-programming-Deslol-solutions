@@ -29,7 +29,7 @@ public class Main {
     }
 
     // Helper function
-    public void greetingWithInfos(String name, int age, String year) {
+    public void greetingWithInfos(String name, int age, int year) {
         System.out.printf("Hello %s, you are %s and were born in %s.", name, age, year);
         System.out.println();
     }
@@ -40,8 +40,6 @@ public class Main {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
         ) {
             String name;
-            String birthYear;
-            String cm;
             Main W5L4 = new Main();
 
             System.out.println("Please type your name: ");
@@ -49,22 +47,21 @@ public class Main {
 //            System.out.println("Please type your age: ");
 //            age = br.readLine();
             System.out.println("What's your year of birth: ");
-            birthYear = br.readLine();
-            int age = Year.now().getValue() - Integer.parseInt(birthYear);
+            int birthYear = Integer.parseInt(br.readLine());
+            int age = Year.now().getValue() - birthYear;
             System.out.println("How tall are you in cm?: ");
-            cm = br.readLine();
-
-            String heightStr = W5L4.cmToFtInches(Integer.parseInt(cm));
+            int cm = Integer.parseInt(br.readLine());
+            String heightStr = W5L4.cmToFtInches(cm);
             W5L4.greetingWithInfos(name, age, birthYear);
             System.out.print(heightStr);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number entered.");
         } catch (IOException e) {
             System.out.println("Unexpected Error Occurred! Please try again later!");
             return;
         }
     }
 }
-
-
 
 
 // With scanner
