@@ -9,7 +9,7 @@
 
 public class Week7Lesson1 {
   public static void main(String[] args) {
-    MyDeque deque = new MyDeque();
+    Deque deque = new Deque();
     deque.addFront("First");
     deque.addFront("Second");
     deque.addRear("Third");

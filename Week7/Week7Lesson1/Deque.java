@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class MyDeque implements DequeueInterface {
+public class Deque implements DequeueInterface {
     private ArrayList<Object> list = new ArrayList<>();
 
     @Override
