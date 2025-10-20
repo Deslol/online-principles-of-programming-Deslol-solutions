@@ -9,6 +9,26 @@
 
 public class Week7Lesson1 {
   public static void main(String[] args) {
-    System.out.println("Hello world!");
+    MyDeque deque = new MyDeque();
+    deque.addFront("First");
+    deque.addFront("Second");
+    deque.addRear("Third");
+      deque.addRear("Fourth");
+      deque.addFront("Fifth");
+    Object fifth = deque.removeFront();
+    Object fourth = deque.removeRear();
+
+    System.out.println(fifth);
+    System.out.println(fourth);
+
+    deque.displayList();
+
+    /* Expected outcome
+      Fifth
+      Fourth
+      Second
+      First
+      Third
+     */
   }
 }
